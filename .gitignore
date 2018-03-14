@@ -1,0 +1,5 @@
+
+/authorization-server.iml
+/.gradle/
+/.idea/
+!/build/

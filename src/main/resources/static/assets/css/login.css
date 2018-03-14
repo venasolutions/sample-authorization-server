@@ -1,0 +1,97 @@
+html, body {
+    background-color: #f6f6f7;
+    height: 100%;
+}
+.container {
+    max-width: 414px;
+    width: 100%;
+    margin: auto;
+    margin-top: 100px;
+    color: #737b7f;
+    padding: 0 20px;
+}
+#header {
+    font-size: 40px;
+    font-weight: bold;
+    color: #50c977;
+    text-align: center;
+}
+.login__container {
+    margin-top: 40px;
+}
+.login__link {
+    display: block;
+    padding: 10px;
+    border: 1px solid #ebeced;
+    max-width: 250px;
+    width: 100%;
+    margin: auto;
+    margin-top: 20px;
+    font-weight: lighter;
+    background-color: #ffffff;
+    text-transform: uppercase;
+    color: grey;
+}
+.login__link.facebook {
+    background-color: #485996;
+    color: #d3d8e6;
+}
+.login__link.google {
+    background-color: #d62d20;
+    color: #ffffff;
+}
+.login__link span {
+    display: inline-block;
+    vertical-align: middle;
+}
+.login__link .material-icons {
+    font-size: 17px;
+    float: right;
+}
+.signup__content {
+    text-align: center;
+    margin-top: 45px;
+}
+.signup__link {
+    color: #50c977;
+    text-decoration: none;
+}
+.title {
+    text-align: center;
+    margin: 30px 0;
+    font-size: 24px;
+}
+.form__group {
+    margin-bottom: 20px;
+}
+.form__label {
+    display: block;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+.form__input {
+    display: block;
+    padding: 10px;
+    height: 50px;
+    font-size: 16px;
+    width: 100%;
+    box-shadow: 0px 5px 11px 3px #cccccc;
+    border: none;
+}
+.form__button {
+    background-color: #50c977;
+    color: #ffffff;
+    display: block;
+    width: 70%;
+    text-align: center;
+    padding: 15px 0;
+    margin: auto;
+    font-size: 16px;
+}
+.form__forgotpassword {
+    color: #56cb7d;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    margin-top: 30px;
+}

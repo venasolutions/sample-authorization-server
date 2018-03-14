@@ -1,0 +1,69 @@
+server:
+  port: 8080
+  contextPath: /authorization
+  compression:
+    enabled: true
+    mime-types: application/hal+json,application/json,application/xml,text/html,text/xml,text/plain
+  use-forward-headers: true
+
+security:
+  require-ssl: true
+
+spring:
+  profiles:
+    active: local
+  #DB properties:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test
+    username: sa
+    password: sa
+
+  #JPA Configuration:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+      jadira:
+        usertype:
+          autoRegisterUserTypes: true
+    hibernate:
+      ddl-auto: validate
+      use-new-id-generator-mappings: true
+
+facebook:
+  client:
+    clientId: 245535092521565
+    clientSecret: 1414c04668daacfd4839f1f4ede3caef
+    accessTokenUri: https://graph.facebook.com/oauth/access_token
+    userAuthorizationUri: https://www.facebook.com/dialog/oauth
+    tokenName: oauth_token
+    authenticationScheme: query
+    clientAuthenticationScheme: form
+    scope:
+      - email
+      - public_profile
+      - user_friends
+  resource:
+    userInfoUri: https://graph.facebook.com/me?fields=age_range,birthday,email,first_name,gender,id,last_name,link,locale,location,middle_name,name,timezone,updated_time,verified
+
+google_plus:
+  client:
+    clientId: 44043282666-ik91d3jo26g4bguoo16imbgn3kqknsdh.apps.googleusercontent.com
+    clientSecret: dOlv5YAT-TlkCOyqYF1gFcGy
+    accessTokenUri: https://www.googleapis.com/oauth2/v4/token
+    userAuthorizationUri: https://accounts.google.com/o/oauth2/v2/auth
+    clientAuthenticationScheme: form
+    scope:
+      - openid
+      - email
+      - profile
+  resource:
+    userInfoUri: https://www.googleapis.com/oauth2/v3/userinfo
+    preferTokenInfo: true
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG

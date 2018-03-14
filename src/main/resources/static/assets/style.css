@@ -1,0 +1,27 @@
+@font-face {
+    font-family: HKGroteskMedium;
+    src: url('./fonts/hk-grotesk/HKGrotesk-Medium.otf') format('opentype');
+}
+
+@font-face {
+    font-family: HKGroteskBold;
+    font-weight: bold;
+    src: url('./fonts/hk-grotesk/HKGrotesk-Bold.otf') format('opentype');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: HKGroteskMedium, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: HKGroteskBold, sans-serif;
+    margin: 0;
+    font-weight: normal;
+}
