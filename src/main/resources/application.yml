@@ -1,13 +1,6 @@
 server:
   port: 8080
   contextPath: /authorization
-  compression:
-    enabled: true
-    mime-types: application/hal+json,application/json,application/xml,text/html,text/xml,text/plain
-  use-forward-headers: true
-
-security:
-  require-ssl: true
 
 spring:
   profiles:
@@ -34,8 +27,8 @@ spring:
 
 facebook:
   client:
-    clientId: 245535092521565
-    clientSecret: 1414c04668daacfd4839f1f4ede3caef
+    clientId: your_facebook_client_id
+    clientSecret: your_facebook_client_secret
     accessTokenUri: https://graph.facebook.com/oauth/access_token
     userAuthorizationUri: https://www.facebook.com/dialog/oauth
     tokenName: oauth_token
@@ -50,8 +43,8 @@ facebook:
 
 google_plus:
   client:
-    clientId: 44043282666-ik91d3jo26g4bguoo16imbgn3kqknsdh.apps.googleusercontent.com
-    clientSecret: dOlv5YAT-TlkCOyqYF1gFcGy
+    clientId: your_google_client_id
+    clientSecret: your_google_client_secret
     accessTokenUri: https://www.googleapis.com/oauth2/v4/token
     userAuthorizationUri: https://accounts.google.com/o/oauth2/v2/auth
     clientAuthenticationScheme: form
