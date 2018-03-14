@@ -6,10 +6,4 @@ import org.vena.example.model.Account
 
 interface AccountService : UserDetailsService {
     fun saveOAuth2Account(oAuth2Authentication: OAuth2Authentication): Account
-
-    fun doesAccountExists(username: String): Boolean
-
-    fun findAccountByUsername(username: String): Account
-
-    fun deleteAccountByUsername(username: String): Account
 }

@@ -8,20 +8,11 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import org.vena.example.model.Account
 import org.vena.example.repository.AccountRepository
-import javax.security.auth.login.AccountNotFoundException
 
 @Service
 @Transactional
 class AccountServiceImpl(private val oAuthAccountDetailWriterFactory: OAuthAccountDetailWriterFactory,
                          private val accountRepository: AccountRepository) : AccountService {
-
-    override fun doesAccountExists(username: String): Boolean = accountRepository.existsByUsername(username)
-
-    override fun findAccountByUsername(username: String) = findAccount(username)
-
-    override fun deleteAccountByUsername(username: String): Account = findAccount(username).apply {
-        accountRepository.delete(this)
-    }
 
     @Throws(UsernameNotFoundException::class)
     override fun loadUserByUsername(username: String): UserDetails {
@@ -46,7 +37,4 @@ class AccountServiceImpl(private val oAuthAccountDetailWriterFactory: OAuthAccou
         return accountRepository.findByUsername(username)
                 ?: accountRepository.save(accountWriter.createAccount(username, details))
     }
-
-    private fun findAccount(username: String) = accountRepository.findByUsername(username)
-            ?: throw AccountNotFoundException(username)
 }
