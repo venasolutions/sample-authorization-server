@@ -20,7 +20,6 @@ class AuthorizationServerConfiguration(private val authenticationManager: Authen
                                        private val dataSource: DataSource) : AuthorizationServerConfigurerAdapter() {
 
     override fun configure(oauthServer: AuthorizationServerSecurityConfigurer) = configure(oauthServer) {
-        tokenKeyAccess("permitAll()")
         checkTokenAccess("isAuthenticated()")
     }
 
