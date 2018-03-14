@@ -7,6 +7,7 @@ CREATE TABLE account
     CONSTRAINT uk_account_username
     UNIQUE,
   email      VARCHAR(255) NOT NULL,
+  password   VARCHAR(255),
   first_name VARCHAR(255) NOT NULL,
   last_name  VARCHAR(255) NOT NULL
 );

@@ -3,6 +3,7 @@ version = "0.0.1"
 
 apply plugin: "kotlin"
 apply plugin: "kotlin-spring"
+apply plugin: "kotlin-jpa"
 
 apply plugin: "org.springframework.boot"
 

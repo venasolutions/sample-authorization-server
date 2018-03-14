@@ -1,5 +1,7 @@
 package org.vena.example.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonProperty
 import org.hibernate.annotations.NaturalId
 import javax.persistence.*
 import javax.validation.constraints.NotNull
@@ -15,6 +17,11 @@ data class Account(@Column(name = "email", nullable = false)
                    @NotNull
                    @Size(min = 3, max = 255)
                    var username: String = email,
+
+                   @Size(min = 8)
+                   @get:JsonIgnore
+                   @set:JsonProperty
+                   var password: String? = null,
 
                    var firstName: String,
                    var lastName: String) {

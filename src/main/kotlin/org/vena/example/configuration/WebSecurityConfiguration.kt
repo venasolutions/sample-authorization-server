@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.oauth2.client.OAuth2ClientContext
 import org.springframework.security.oauth2.client.OAuth2RestTemplate
 import org.springframework.security.oauth2.client.filter.OAuth2ClientAuthenticationProcessingFilter
@@ -15,7 +16,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter
 import org.springframework.web.filter.CompositeFilter
 import org.vena.example.extensions.kotlin.configure
-import org.vena.example.security.AppAuthenticationEntryPoint
 import org.vena.example.security.OAuth2PrincipalExtractor
 import org.vena.example.security.OAuth2SsoAuthenticationSuccessHandler
 import org.vena.example.service.AccountService
@@ -30,16 +30,15 @@ class WebSecurityConfiguration(private val oauth2ClientContext: OAuth2ClientCont
                                private val accountService: AccountService) : WebSecurityConfigurerAdapter() {
 
     override fun configure(auth: AuthenticationManagerBuilder) = configure(auth) {
-        userDetailsService(accountService)
+        userDetailsService(accountService).passwordEncoder(BCryptPasswordEncoder())
         jdbcAuthentication().dataSource(dataSource)
     }
 
     override fun configure(http: HttpSecurity) = configure(http) {
         antMatcher("/**")
-                .authorizeRequests().antMatchers("/", "/health", "/login**", "/logout**", "/assets/**").permitAll()
+                .authorizeRequests().antMatchers("/", "/login**", "/assets/**").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").permitAll()
-                .and().exceptionHandling().authenticationEntryPoint(AppAuthenticationEntryPoint("/login"))
                 .and().addFilterBefore(ssoFilter(), BasicAuthenticationFilter::class.java)
     }
 

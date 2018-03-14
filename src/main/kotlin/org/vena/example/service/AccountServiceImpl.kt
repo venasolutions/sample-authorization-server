@@ -1,13 +1,13 @@
 package org.vena.example.service
 
-import org.vena.example.model.Account
-import org.vena.example.repository.AccountRepository
 import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.security.oauth2.provider.OAuth2Authentication
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import org.vena.example.model.Account
+import org.vena.example.repository.AccountRepository
 import javax.security.auth.login.AccountNotFoundException
 
 @Service
@@ -29,7 +29,12 @@ class AccountServiceImpl(private val oAuthAccountDetailWriterFactory: OAuthAccou
                 ?: throw UsernameNotFoundException("Could not find account with username $username!")
 
 
-        return User.withUsername(account.username).build()
+        return with(account) {
+            User.withUsername(username)
+                    .password(password)
+                    .authorities("USER")
+                    .build()
+        }
     }
 
     override fun saveOAuth2Account(oAuth2Authentication: OAuth2Authentication): Account {
